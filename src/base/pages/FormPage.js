@@ -43,9 +43,9 @@ class FormPage extends Component
                             name={field.slug}
                             as={Form.Field}
                             control={Input}
-                            label={field.nome}
-                            type={field.tipo}
-                            className={field.classes}
+                            label={field.name}
+                            type={field.type}
+                            className={field.classes.input}
                         />
                     ))}
                     <Button

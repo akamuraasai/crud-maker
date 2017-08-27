@@ -19,7 +19,7 @@ class ListPage extends Component
 
         const itemList = item => (
             <Table.Row key={item.id}>
-                {fields.map((field, index) => <Table.Cell key={index}>{item[field.slug]}</Table.Cell>)}
+                {fields.map((field, index) => <Table.Cell className={field.classes.tableCell} key={index}>{item[field.slug]}</Table.Cell>)}
                 <Table.Cell textAlign='center'>
                     <Button onClick={() => load(item)} size="small" icon="pencil" color="yellow"/>
                     <Button onClick={() => remove(model, item.id)} size="small" icon="trash" color="red"/>
@@ -37,7 +37,7 @@ class ListPage extends Component
     renderHeader = () => {
         const items = this.props.fields || [];
         return items.map((header, index) => (
-            <Table.HeaderCell key={index} className={header.classes_header}>{header.nome}</Table.HeaderCell>
+            <Table.HeaderCell key={index} className={header.classes.tableHeader}>{header.name}</Table.HeaderCell>
         ));
     }
 

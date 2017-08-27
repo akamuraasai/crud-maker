@@ -17,8 +17,8 @@ class App extends Component {
                         </Menu>
                     </Container>
                     <Container>
-                        <Lista model="trucks" fields={fields.filter(field => field.header)}/>
-                        <Formulario model="trucks" evento={1} fields={fields.filter(field => field.form)}/>
+                        <Lista model="trucks" fields={fields.filter(field => field.show.header)}/>
+                        <Formulario model="trucks" evento={1} fields={fields.filter(field => field.show.form)}/>
                     </Container>
                 </Segment>
             </div>
