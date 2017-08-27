@@ -6,28 +6,28 @@ import { bindActionCreators } from 'redux';
 
 import InputField from '../helpers/InputField';
 
-import { inserir, alterar, carregar } from './Formulario.actions';
+import { insert, update, load } from './CRUD.actions';
 
-class Formulario extends Component
+class FormPage extends Component
 {
     handleEvento = e => {
         e.preventDefault();
 
-        const { inserir, alterar, model, reset } = this.props;
-        const dados = this.props.campos_form.formulario.values;
+        const { insert, update, model, reset } = this.props;
+        const data = this.props.formFields.mainForm.values;
         const item = this.props.initialValues || '';
 
         if (item.id === undefined || item.id === '')
-            inserir(model, dados);
+            insert(model, data);
         else
-            alterar(model, item.id, dados);
+            update(model, item.id, data);
 
         reset();
     };
 
     render() {
         const { initialValues } = this.props;
-        const campos = this.props.campos || [];
+        const fields = this.props.fields || [];
         const id = initialValues === undefined ? undefined : initialValues.id;
 
         if (id === undefined)
@@ -36,15 +36,16 @@ class Formulario extends Component
         return (
             <div style={{ marginTop: 20 }}>
                 <Form onSubmit={this.handleEvento}>
-                    {campos.map((campo, index) => (
+                    {fields.map((field, index) => (
                         <Field
                             key={index}
                             component={InputField}
-                            name={campo.slug}
+                            name={field.slug}
                             as={Form.Field}
                             control={Input}
-                            label={campo.nome}
-                            className={campo.classes}
+                            label={field.nome}
+                            type={field.tipo}
+                            className={field.classes}
                         />
                     ))}
                     <Button
@@ -59,9 +60,9 @@ class Formulario extends Component
     }
 }
 
-Formulario = reduxForm({ form: 'formulario', enableReinitialize: true })(Formulario);
+FormPage = reduxForm({ form: 'mainForm', enableReinitialize: true })(FormPage);
 
-const mapStateToProps = state => ({ campos_form: state.form, initialValues: state.main_form.item });
-const mapDispatchToProps = dispatch => bindActionCreators({ inserir, alterar, carregar }, dispatch);
+const mapStateToProps = state => ({ formFields: state.form, initialValues: state.crudReducer.item });
+const mapDispatchToProps = dispatch => bindActionCreators({ insert, update, load }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Formulario);
+export default connect(mapStateToProps, mapDispatchToProps)(FormPage);

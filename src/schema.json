@@ -1,6 +1,14 @@
 [
-  { "nome": "ID", "slug": "id", "classes": "", "tipo": "text", "header": true, "form": false, "classes_header": "three wide column" },
+  {
+    "nome": "ID",
+    "slug": "id",
+    "classes": "",
+    "tipo": "text",
+    "header": true,
+    "form": false,
+    "classes_header": "three wide column"
+  },
   { "nome": "Nome", "slug": "nome", "classes": "", "tipo": "text", "header": true, "form": true, "classes_header": "" },
-  { "nome": "Endereco", "slug": "endereco", "classes": "", "tipo": "text", "header": true, "form": true, "classes_header": "four wide column" },
-  { "nome": "Cargo", "slug": "cargo", "classes": "", "tipo": "text", "header": false, "form": true, "classes_header": "" }
+  { "nome": "Endereco", "slug": "endereco", "classes": "six wide column", "tipo": "text", "header": true, "form": true, "classes_header": "four wide column" },
+  { "nome": "Cargo", "slug": "cargo", "classes": "six wide column", "tipo": "number", "header": false, "form": true, "classes_header": "" }
 ]

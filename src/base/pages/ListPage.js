@@ -6,46 +6,46 @@ import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 import { database } from "../database/firebase";
 
-import { carregar, remover, novo } from './Formulario.actions';
+import { load, remove, add } from './CRUD.actions';
 
-class Lista extends Component
+class ListPage extends Component
 {
-    state = { itens: {} };
+    state = { items: {} };
 
     renderRows = () => {
-        const itens = this.state.itens || {};
-        const campos = this.props.campos || [];
-        const { model, carregar, remover } = this.props;
+        const items = this.state.items;
+        const fields = this.props.fields || [];
+        const { model, load, remove } = this.props;
 
-        const itemLista = item => (
+        const itemList = item => (
             <Table.Row key={item.id}>
-                {campos.map((campo, index) => <Table.Cell key={index}>{item[campo.slug]}</Table.Cell>)}
+                {fields.map((field, index) => <Table.Cell key={index}>{item[field.slug]}</Table.Cell>)}
                 <Table.Cell textAlign='center'>
-                    <Button onClick={() => carregar(item)} size="small" icon="pencil" color="yellow"/>
-                    <Button onClick={() => remover(model, item.id)} size="small" icon="trash" color="red"/>
+                    <Button onClick={() => load(item)} size="small" icon="pencil" color="yellow"/>
+                    <Button onClick={() => remove(model, item.id)} size="small" icon="trash" color="red"/>
                 </Table.Cell>
             </Table.Row>
         );
 
-        return _(itens)
+        return _(items)
             .mapValues((value, id) => _.merge({}, value, {id}))
-            .mapValues(itemLista)
+            .mapValues(itemList)
             .values()
             .value();
     };
 
     renderHeader = () => {
-        const itens = this.props.campos || [];
-        return itens.map((header, index) => (
+        const items = this.props.fields || [];
+        return items.map((header, index) => (
             <Table.HeaderCell key={index} className={header.classes_header}>{header.nome}</Table.HeaderCell>
         ));
     }
 
-    lista = database.ref(`${this.props.model}/`);
-    componentDidMount = () => this.lista.on('value', snapshot => this.setState({ ...this.state, itens: snapshot.val() }));
+    ref = database.ref(`${this.props.model}/`);
+    componentDidMount = () => this.ref.on('value', snapshot => this.setState({ ...this.state, items: snapshot.val() }));
 
     render = () => {
-        const { initialValues, novo } = this.props;
+        const { initialValues, add } = this.props;
         const id = initialValues === undefined ? undefined : initialValues.id;
 
         if (id === undefined)
@@ -72,7 +72,7 @@ class Lista extends Component
                                         primary
                                         size='small'
                                         content="Novo"
-                                        onClick={novo}
+                                        onClick={add}
                                     />
                                 </Table.HeaderCell>
                             </Table.Row>
@@ -85,8 +85,8 @@ class Lista extends Component
     };
 }
 
-const mapStateToProps = state => ({ initialValues: state.main_form.item });
-const mapDispatchToProps = dispatch => bindActionCreators({ carregar, remover, novo }, dispatch);
+const mapStateToProps = state => ({ initialValues: state.crudReducer.item });
+const mapDispatchToProps = dispatch => bindActionCreators({ load, remove, add }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Lista);
+export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
 

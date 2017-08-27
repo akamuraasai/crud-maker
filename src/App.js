@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Menu, Segment } from 'semantic-ui-react'
 
-import Lista from './base/pages/Lista';
-import Formulario from './base/pages/Formulario';
+import Lista from './base/pages/ListPage';
+import Formulario from './base/pages/FormPage';
 
-import campos from './schema.json';
+import fields from './schema.json';
 
 class App extends Component {
     render() {
@@ -17,8 +17,8 @@ class App extends Component {
                         </Menu>
                     </Container>
                     <Container>
-                        <Lista model="trucks" campos={campos.filter(campo => campo.header)}/>
-                        <Formulario model="trucks" evento={1} campos={campos.filter(campo => campo.form)}/>
+                        <Lista model="trucks" fields={fields.filter(field => field.header)}/>
+                        <Formulario model="trucks" evento={1} fields={fields.filter(field => field.form)}/>
                     </Container>
                 </Segment>
             </div>
