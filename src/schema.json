@@ -1,6 +1,6 @@
 [
   { "nome": "ID", "slug": "id", "classes": "", "tipo": "text", "header": true, "form": false, "classes_header": "three wide column" },
   { "nome": "Nome", "slug": "nome", "classes": "", "tipo": "text", "header": true, "form": true, "classes_header": "" },
-  { "nome": "Sobrenome", "slug": "sobrenome", "classes": "", "tipo": "text", "header": true, "form": true, "classes_header": "three wide column" },
-  { "nome": "Cidade", "slug": "cidade", "classes": "", "tipo": "text", "header": true, "form": true, "classes_header": "three wide column" }
+  { "nome": "Endereco", "slug": "endereco", "classes": "", "tipo": "text", "header": true, "form": true, "classes_header": "four wide column" },
+  { "nome": "Cargo", "slug": "cargo", "classes": "", "tipo": "text", "header": false, "form": true, "classes_header": "" }
 ]
