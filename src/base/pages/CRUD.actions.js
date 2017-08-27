@@ -30,3 +30,4 @@ export const remove = (model, id) => (
 
 export const add = item => ({ type: 'CHANGED', payload: { id: '' } });
 export const load = item => ({ type: 'CHANGED', payload: item });
+export const dismiss = () => ({ type: 'CHANGED', payload: {} });

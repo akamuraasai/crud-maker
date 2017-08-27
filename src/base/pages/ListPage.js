@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Header, Button } from 'semantic-ui-react';
+import { Table, Header, Button, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -51,33 +51,35 @@ class ListPage extends Component
         if (id === undefined)
             return (
                 <div style={{ marginTop: 20 }}>
-                    <Header as="h2" dividing>Lista de Itens</Header>
-                    <Table unstackable color="black" striped>
-                        <Table.Header>
-                            <Table.Row>
-                                {this.renderHeader()}
-                                <Table.HeaderCell className="two wide column" textAlign='center'>Ações</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            {this.renderRows()}
-                        </Table.Body>
-                        <Table.Footer fullWidth>
-                            <Table.Row>
-                                <Table.HeaderCell colSpan='99'>
-                                    <Button
-                                        floated="right"
-                                        icon="plus"
-                                        labelPosition="left"
-                                        primary
-                                        size='small'
-                                        content="Novo"
-                                        onClick={add}
-                                    />
-                                </Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Footer>
-                    </Table>
+                    <Header as="h3" dividing>Lista de Registros</Header>
+                    <Segment>
+                        <Table unstackable color="black" striped>
+                            <Table.Header>
+                                <Table.Row>
+                                    {this.renderHeader()}
+                                    <Table.HeaderCell className="two wide column" textAlign='center'>Ações</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                                {this.renderRows()}
+                            </Table.Body>
+                            <Table.Footer fullWidth>
+                                <Table.Row>
+                                    <Table.HeaderCell colSpan='99'>
+                                        <Button
+                                            floated="right"
+                                            icon="plus"
+                                            labelPosition="left"
+                                            primary
+                                            size='small'
+                                            content="Novo"
+                                            onClick={add}
+                                        />
+                                    </Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Footer>
+                        </Table>
+                    </Segment>
                 </div>
             );
 

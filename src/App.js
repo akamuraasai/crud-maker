@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { Container, Menu, Segment } from 'semantic-ui-react'
 
 import Lista from './base/pages/ListPage';
 import Formulario from './base/pages/FormPage';
 
-import fields from './schema.json';
+import groups from './schema.json';
 
 class App extends Component {
     render() {
@@ -17,8 +18,8 @@ class App extends Component {
                         </Menu>
                     </Container>
                     <Container>
-                        <Lista model="trucks" fields={fields.filter(field => field.show.header)}/>
-                        <Formulario model="trucks" evento={1} fields={fields.filter(field => field.show.form)}/>
+                        <Lista model="trucks" fields={_.union(..._.map(groups, group => group.fields)).filter(field => field.show.header)}/>
+                        <Formulario model="trucks" evento={1} groups={groups}/>
                     </Container>
                 </Segment>
             </div>

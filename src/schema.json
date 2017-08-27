@@ -1,73 +1,73 @@
 [
   {
-    "name": "ID",
-    "slug": "id",
-    "type": "text",
-    "show": {
-      "header": true,
-      "form": false
-    },
-    "classes": {
-      "input": "",
-      "tableHeader": "three wide column",
-      "tableCell": ""
-    },
-    "row": {
-      "alone": true,
-      "rowIdentifier": null
-    },
-    "validations": {
-      "minSize": 0,
-      "maxSize": 250,
-      "required": false
-    }
+    "fields":
+    [
+      {
+        "name": "ID",
+        "slug": "id",
+        "type": "text",
+        "show": {
+          "header": true,
+          "form": false
+        },
+        "classes": {
+          "input": "",
+          "tableHeader": "three wide column",
+          "tableCell": ""
+        },
+        "validations": {
+          "minSize": 0,
+          "maxSize": 250,
+          "required": false
+        }
+      }
+    ]
   },
 
   {
-    "name": "Nome",
-    "slug": "nome",
-    "type": "text",
-    "show": {
-      "header": true,
-      "form": true
-    },
-    "classes": {
-      "input": "",
-      "tableHeader": "",
-      "tableCell": ""
-    },
-    "row": {
-      "alone": true,
-      "rowIdentifier": null
-    },
-    "validations": {
-      "minSize": 0,
-      "maxSize": 250,
-      "required": false
-    }
-  },
+    "fields":
+    [
+      {
+        "name": "Nome",
+        "slug": "nome",
+        "type": "text",
+        "width": 12,
+        "show": {
+          "header": true,
+          "form": true
+        },
+        "classes": {
+          "input": "",
+          "tableHeader": "",
+          "tableCell": ""
+        },
+        "validations": {
+          "minSize": 0,
+          "maxSize": 250,
+          "required": false
+        }
+      },
 
-  {
-    "name": "Foo",
-    "slug": "foo",
-    "type": "text",
-    "show": {
-      "header": true,
-      "form": true
-    },
-    "classes": {
-      "input": "",
-      "tableHeader": "three wide column",
-      "tableCell": ""
-    },
-    "row": {
-      "alone": true,
-      "rowIdentifier": null
-    },
-    "validations": {
-      "minSize": 0,
-      "maxSize": 250,
-      "required": false
-    }
+      {
+        "name": "Foo",
+        "slug": "foo",
+        "type": "text",
+        "width": 4,
+        "show": {
+          "header": true,
+          "form": true
+        },
+        "classes": {
+          "input": "",
+          "tableHeader": "three wide column",
+          "tableCell": ""
+        },
+        "validations": {
+          "minSize": 0,
+          "maxSize": 250,
+          "required": false
+        }
+      }
+    ]
   }
 ]
