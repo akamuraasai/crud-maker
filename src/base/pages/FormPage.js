@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import InputField from '../helpers/InputField';
 
 import { insert, update, load, dismiss } from './CRUD.actions';
+import { required, minLength, maxLength, number, email, minValue, alphaNumeric } from '../helpers/validators';
 
 class FormPage extends Component
 {
@@ -18,11 +19,11 @@ class FormPage extends Component
         const item = this.props.initialValues || '';
 
         if (item.id === undefined || item.id === '')
-            insert(model, data);
+            insert(model, data)
+                .then(() => reset());
         else
-            update(model, item.id, data);
-
-        reset();
+            update(model, item.id, data)
+                .then(() => reset());
     };
 
     cancel = () => {
@@ -30,10 +31,10 @@ class FormPage extends Component
 
         dismiss();
         reset();
-    }
+    };
 
     render = () => {
-        const { initialValues } = this.props;
+        const { initialValues, submitting } = this.props;
         const groups = this.props.groups || [];
         const id = initialValues === undefined ? undefined : initialValues.id;
 
@@ -51,6 +52,8 @@ class FormPage extends Component
                                     if (!field.show.form)
                                         return false;
 
+                                    const validate = applyRules(field.checkRules);
+                                    console.log(validate);
                                     return (
                                         <Field
                                             key={index2}
@@ -62,6 +65,7 @@ class FormPage extends Component
                                             type={field.type}
                                             className={field.classes.input}
                                             width={field.width}
+                                            validate={validate}
                                         />
                                     )
                                 })}
@@ -80,6 +84,7 @@ class FormPage extends Component
                                     type="submit"
                                     positive
                                     icon="save"
+                                    disabled={submitting}
                                     content={id === undefined || id === '' ? 'Salvar' : 'Alterar'}
                                 />
                             </Grid.Column>
@@ -90,6 +95,19 @@ class FormPage extends Component
         );
     }
 }
+
+const rules = { required, minLength, maxLength, number, email, minValue, alphaNumeric };
+
+const applyRules = checkRules => {
+    let validations = [];
+    for(let ruleName in checkRules) {
+        let ruleFunc = rules[ruleName];
+        if(ruleFunc)
+            validations.push(ruleFunc(checkRules[ruleName]))
+    }
+    return validations;
+}
+
 
 FormPage = reduxForm({ form: 'mainForm', enableReinitialize: true })(FormPage);
 

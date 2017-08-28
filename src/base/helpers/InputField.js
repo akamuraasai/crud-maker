@@ -5,8 +5,10 @@ export default class InputField extends React.Component
 {
     render() {
         const { meta, ...rest } = this.props;
+        const { touched } = meta;
+        const error = meta.error !== undefined;
         return (
-            <Form.Field {...rest}/>
+            <Form.Field {...rest} error={touched && error}/>
         );
     }
 }

@@ -15,9 +15,9 @@
           "tableHeader": "three wide column",
           "tableCell": ""
         },
-        "validations": {
-          "minSize": 0,
-          "maxSize": 250,
+        "checkRules": {
+          "minLength": 0,
+          "maxLength": 250,
           "required": false
         }
       }
@@ -41,10 +41,10 @@
           "tableHeader": "",
           "tableCell": ""
         },
-        "validations": {
-          "minSize": 0,
-          "maxSize": 250,
-          "required": false
+        "checkRules": {
+          "minLength": 0,
+          "maxLength": 5,
+          "required": true
         }
       },
 
@@ -62,10 +62,10 @@
           "tableHeader": "three wide column",
           "tableCell": ""
         },
-        "validations": {
-          "minSize": 0,
-          "maxSize": 250,
-          "required": false
+        "checkRules": {
+          "minLength": 0,
+          "maxLength": 250,
+          "required": true
         }
       }
     ]

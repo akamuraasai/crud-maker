@@ -31,12 +31,25 @@ Alteração do Schema
 
 ### Configuração
 
+Para utilizar este projeto é necessário possuir uma conta no Firebase e inserir as configurações de utilização no arquivo `.env.local.js` presente na pasta `/src`.
+Este arquivo deve possuir a seguinte estrutura:
+```js
+export default {
+    apiKey: "SUA_API_KEY",
+    authDomain: "SEU_DOMINIO.firebaseapp.com",
+    databaseURL: "https://SEU_DOMINIO.firebaseio.com",
+    projectId: "ID_DO_PROJETO",
+    storageBucket: "SEU_DOMINIO.appspot.com",
+    messagingSenderId: "ID_DO_MENSAGEIRO"
+};
+```
+
 ### ToDo List
 
 - [X] Trocar idioma das funções e variaveis para Inglês.
 - [x] Trocar idioma do Schema para Inglês.
 - [ ] Implementar validação nos campos do formulário.
-- [ ] Criar metodo de estruturação do formulário.
+- [X] Criar metodo de estruturação do formulário.
 - [ ] Implementar visualização em multi-idioma no CRUD.
 - [ ] Implementar multiplos CRUDs.
 - [ ] Criar menu de navegação entre os multiplos CRUDs.
