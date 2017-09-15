@@ -28,10 +28,10 @@
     "fields":
     [
       {
-        "name": "Nome",
-        "slug": "nome",
+        "name": "Cliente",
+        "slug": "cliente",
         "type": "text",
-        "width": 12,
+        "width": 8,
         "show": {
           "header": true,
           "form": true
@@ -49,10 +49,10 @@
       },
 
       {
-        "name": "Foo",
-        "slug": "foo",
+        "name": "CNPJ",
+        "slug": "cnpj",
         "type": "text",
-        "width": 4,
+        "width": 8,
         "show": {
           "header": true,
           "form": true
@@ -69,5 +69,52 @@
         }
       }
     ]
-  }
+},
+
+{
+  "fields":
+  [
+    {
+      "name": "Razão Social",
+      "slug": "razao",
+      "type": "text",
+      "width": 8,
+      "show": {
+        "header": false,
+        "form": true
+      },
+      "classes": {
+        "input": "",
+        "tableHeader": "",
+        "tableCell": ""
+      },
+      "checkRules": {
+        "minLength": 0,
+        "maxLength": 5,
+        "required": true
+      }
+    },
+
+    {
+      "name": "Socio",
+      "slug": "socio",
+      "type": "text",
+      "width": 8,
+      "show": {
+        "header": false,
+        "form": true
+      },
+      "classes": {
+        "input": "",
+        "tableHeader": "three wide column",
+        "tableCell": ""
+      },
+      "checkRules": {
+        "minLength": 0,
+        "maxLength": 250,
+        "required": true
+      }
+    }
+  ]
+}
 ]
