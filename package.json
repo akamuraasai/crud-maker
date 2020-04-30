@@ -51,13 +51,16 @@
     "webpack": "3.5.1",
     "webpack-dev-server": "3.1.2",
     "webpack-manifest-plugin": "1.2.1",
-    "whatwg-fetch": "2.0.3"
+    "whatwg-fetch": "2.0.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {},
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -99,5 +102,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "snyk": true
 }
